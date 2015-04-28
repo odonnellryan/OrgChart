@@ -1,6 +1,16 @@
 ## Organizational Chart
 ### Node.js + Express as the backend, SQLite as the DB, and Angular as the frontend tech.
 
+How to run:
+
+1) Install Node.js and NPM
+
+2) Run `npm install` from OrgChart directory
+
+3) Run `npm start`
+
+
+
 The 3 main requirements are:
 
 1) It should allow users to view the chart
@@ -11,7 +21,8 @@ The 3 main requirements are:
 
 
 
-Note on data structures: 
+### Note on data structures: 
+
     This approaches a graph/heap/tree, but adding these constraints would
     complicate the problem and make it harder to manage. By looking at several 
     org. charts online, it can be determined that most organizations are 
@@ -20,7 +31,7 @@ Note on data structures:
     sort our data based on the numerical rank of the `Title` model. 
 
 
-Working spec:
+### Working spec:
 
 1) Each person can have multiple managers and multiple direct reports. 
   - Represent with a one to many `Managers` field.
@@ -77,7 +88,7 @@ Working spec:
 
 
 
-High-level feature list:
+### High-level feature list:
 
 1) Session support for users
 
