@@ -1,7 +1,7 @@
 ## Organizational Chart
 ### Node.js + Express as the backend, SQLite as the DB, and Angular as the frontend tech.
 
-How to run:
+### How to run:
 
 1) Install Node.js and NPM
 
@@ -11,7 +11,7 @@ How to run:
 
 
 
-The 3 main requirements are:
+### The 3 main requirements are:
 
 1) It should allow users to view the chart
 
@@ -67,7 +67,7 @@ The 3 main requirements are:
 	  One to one relation with the `Company`
 
   - `Company` model
-  	    Sequential GUID as a PK (Note: this may give you performance problems with 
+  	    Sequential uuid as a PK (Note: this may give you performance problems with 
   	      indexing, so it should be thought about a little more) so we can can 
   	      easily generate our unique URL for the company org char page. Store this
   	      in the session for the user so they can access their `Companies` without

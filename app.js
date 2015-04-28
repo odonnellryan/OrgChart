@@ -9,6 +9,10 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+app.set('models', require('./models/index'));
+
+// setup db
+app.get('models').sequelize.sync()
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
