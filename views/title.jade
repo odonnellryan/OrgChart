@@ -1,5 +1,11 @@
 extends layout
 
 block content
-  h1 = title
-  p Title: #{title}
+  if titles
+    each val in companies
+      div.loginbox
+      p #{val.name}
+  div.form
+    form(name="create_company", action="/company", method="post")
+      input(type="text", name="name")
+      input(type="submit", value="create")

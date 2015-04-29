@@ -2,16 +2,11 @@ var models = require('../models');
 
 exports.createCompany = function (req, res) {
   models.Company.build(
-    {name: req.body.name},
+    { name: req.body.name },
     { validate: true }
-  )
-    .save()
+  ).save()
     .then(function (company) {
-      console.log(company.get({
-        plain: true
-      }));
-      var companies = req.session.companies;
-      if (!companies) {
+      if (!req.session.companies) {
         req.session.companies = [company.uuid];
         res.redirect('/company');
       } else {
@@ -19,16 +14,44 @@ exports.createCompany = function (req, res) {
         res.redirect('/company');
       }
     }).catch(function (error) {
-      res.render('error', {error:  error});
+      res.render('company', {error:  error});
     });
 };
 
 exports.getCompany = function (req, res) {
   models.Company.findAll({
     where: {
-      uuid: {
-        in: req.session.companies
+      uuid: { in: req.session.companies }
+    }
+  })
+    .then(function (companies) {
+      console.log(companies);
+      res.render('company', {companies:  companies});
+    });
+};
+
+exports.createTitle = function (req, res) {
+  models.Company.build(
+    { name: req.body.name },
+    { validate: true }
+  ).save()
+    .then(function (company) {
+      if (!req.session.companies) {
+        req.session.companies = [company.uuid];
+        res.redirect('/company');
+      } else {
+        req.session.companies.push(company.uuid);
+        res.redirect('/company');
       }
+    }).catch(function (error) {
+      res.render('company', {error:  error});
+    });
+};
+
+exports.getCompany = function (req, res) {
+  models.Company.findAll({
+    where: {
+      uuid: { in: req.session.companies }
     }
   })
     .then(function (companies) {

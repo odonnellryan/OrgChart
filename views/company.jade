@@ -4,7 +4,7 @@ block content
     if companies
         each val in companies
           p #{val.name}
-    div.loginbox
+    div.form
       form(name="create_company", action="/company", method="post")
           input(type="text", name="name")
           input(type="submit", value="create")
