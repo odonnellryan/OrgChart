@@ -7,10 +7,13 @@ router.route('/')
     db_mods.createCompany(req, res);
   })
   .get(function (req, res) {
-    if (req.session.companies) {
+    var companies = req.session.companies;
+    console.log(companies);
+    if (companies) {
       db_mods.getCompany(req, res);
+    } else {
+      res.render('company');
     }
-    res.render('company');
   });
 
 module.exports = router;

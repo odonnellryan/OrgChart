@@ -4,13 +4,20 @@ exports.createCompany = function (req, res) {
   models.Company.create({
     name: req.param('name')
   })
-    .then(function () {
-      res.redirect('/');
+    .then(function (company) {
+      var companies = req.session.companies;
+      if (!companies) {
+        companies = req.session.companies = [company.uuid];
+        res.redirect('/');
+      } else {
+        companies.push(company.uuid);
+        res.redirect('/');
+      }
     });
 };
 
 exports.getCompany = function (req, res) {
-  models.Company.Company.findAll({
+  models.Company.findAll({
     where: {
       uuid: {
         in: req.session.companies
@@ -18,6 +25,7 @@ exports.getCompany = function (req, res) {
     }
   })
     .then(function (companies) {
+      console.log(companies)
       res.render('company', {companies:  companies});
     });
 };

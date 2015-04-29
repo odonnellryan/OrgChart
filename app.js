@@ -35,7 +35,7 @@ app.use(cookieParser());
 app.use(
   session({
     secret: 'super_secret_key',
-    resave: true,
+    resave: false,
     saveUninitialized: true
   })
 );
