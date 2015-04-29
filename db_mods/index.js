@@ -1,18 +1,25 @@
 var models = require('../models');
 
 exports.createCompany = function (req, res) {
-  models.Company.create({
-    name: req.param('name')
+  models.Company.build({
+    name: req.body.name,
+    { validate: true }
   })
+    .save()
     .then(function (company) {
+      console.log(company.get({
+        plain: true
+      }));
       var companies = req.session.companies;
       if (!companies) {
-        companies = req.session.companies = [company.uuid];
-        res.redirect('/');
+        req.session.companies = [company.uuid];
+        res.redirect('/company');
       } else {
         req.session.companies.push(company.uuid);
-        res.redirect('/');
+        res.redirect('/company');
       }
+    }).catch(function (error) {
+      console.log(error);
     });
 };
 
