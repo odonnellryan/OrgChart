@@ -1,10 +1,10 @@
 var models = require('../models');
 
 exports.createCompany = function (req, res) {
-  models.Company.build({
-    name: req.body.name,
+  models.Company.build(
+    {name: req.body.name},
     { validate: true }
-  })
+  )
     .save()
     .then(function (company) {
       console.log(company.get({
@@ -19,7 +19,7 @@ exports.createCompany = function (req, res) {
         res.redirect('/company');
       }
     }).catch(function (error) {
-      console.log(error);
+      res.render('error', {error:  error});
     });
 };
 
