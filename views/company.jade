@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    if companies
+        each val in companies
+          p val
+    else
+      div.loginbox
+        form(name="create_company", action="/company", method="post")
+            input(type="text", name="name")
+            input(type="submit", value="create")

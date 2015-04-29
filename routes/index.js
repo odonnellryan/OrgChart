@@ -1,9 +1,14 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+function sleep(milliSeconds) {
+  var startTime = new Date().getTime();
+  while (new Date().getTime() < startTime + milliSeconds);
+}
+
+router.get('/', function (req, res) {
+  sleep(100000);
+  res.render('index', { title: 'OrgChart.js!' });
 });
 
 module.exports = router;
