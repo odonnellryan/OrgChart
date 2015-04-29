@@ -12,8 +12,9 @@ router.route('/')
   .get(function (req, res) {
     if (req.session.companies) {
       db_mods.getCompany(req, res);
+    } else {
+      res.render('company');
     }
-    res.render('company');
   });
 
 module.exports = router;

@@ -10,7 +10,7 @@ exports.createCompany = function (req, res) {
         companies = req.session.companies = [company.uuid];
         res.redirect('/');
       } else {
-        companies.push(company.uuid);
+        req.session.companies.push(company.uuid);
         res.redirect('/');
       }
     });
