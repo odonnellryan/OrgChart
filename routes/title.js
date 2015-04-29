@@ -6,7 +6,7 @@ router.route('/')
   .post(function (req, res) {
     // I'd like to look into this more to see if doing things
     // in this manner fits in with the event loop model
-    // of Node.js. This needs testing.
+    // of Node.js. I feel it'd be okay.
     db_mods.createTitle(req, res);
   })
   .get(function (req, res) {
