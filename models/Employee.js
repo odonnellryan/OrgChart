@@ -7,6 +7,14 @@ module.exports = function (sequelize, DataTypes) {
         len: [1, 255]
       }
     }
+  }, {
+    classMethods: {
+      associate: function (models) {
+        Employee.belongsTo(models.Company);
+        Employee.belongsTo(models.Title);
+        Employee.hasMany(models.Employee, {as: "Managers"});
+      }
+    }
   });
   return Employee;
 };

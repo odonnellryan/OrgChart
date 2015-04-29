@@ -13,6 +13,12 @@ module.exports = function (sequelize, DataTypes) {
         max: 99
       }
     }
+  }, {
+    classMethods: {
+      associate: function (models) {
+        Title.belongsTo(models.Company);
+      }
+    }
   });
   return Title;
 };

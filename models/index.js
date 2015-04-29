@@ -5,23 +5,28 @@ var sequelize = new Sequelize('db', 'username', 'password', {
   storage: 'db.sqlite'
 });
 
-// load models
-var models = [
-  'Company',
-  'Title',
-  'Employee'
-];
+var fs        = require("fs");
+var path      = require("path");
+var env       = process.env.NODE_ENV || "development";
+var db        = {};
 
-models.forEach(function (model) {
-  module.exports[model] = sequelize.import(__dirname + '/' + model);
+fs
+  .readdirSync(__dirname)
+  .filter(function (file) {
+    return (file.indexOf(".") !== 0) && (file !== "index.js");
+  })
+  .forEach(function (file) {
+    var model = sequelize["import"](path.join(__dirname, file));
+    db[model.name] = model;
+  });
+
+Object.keys(db).forEach(function (modelName) {
+  if ("associate" in db[modelName]) {
+    db[modelName].associate(db);
+  }
 });
 
-(function (m) {
-  m.Employee.belongsTo(m.Company);
-  m.Employee.belongsTo(m.Title);
-  m.Employee.hasMany(m.Employee, {as: "Managers"});
-  m.Company.hasMany(m.Employee, {as: "Employees"});
-  m.Title.belongsTo(m.Company);
-}(module.exports));
+db.sequelize = sequelize;
+db.Sequelize = Sequelize;
 
-module.exports.sequelize = sequelize;
+module.exports = db;

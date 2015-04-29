@@ -5,12 +5,18 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false,
       validate: {
         len: [1, 255]
-      }
+      },
     },
     uuid: {
       type: DataTypes.UUID,
       primaryKey: true,
       defaultValue: DataTypes.UUIDV1
+    }
+  }, {
+    classMethods: {
+      associate: function (models) {
+        Company.hasMany(models.Employee, {as: "Employees"});
+      }
     }
   });
   return Company;

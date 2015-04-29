@@ -32,11 +32,13 @@ app.use(cookieParser());
 // also, in a production environment we should probably use redis or
 // similar to store session data, otherwise if we restart the app
 // this is lost!
-app.use(session({
+app.use(
+  session({
     secret: 'super_secret_key',
     resave: true,
     saveUninitialized: true
-}));
+  })
+);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
