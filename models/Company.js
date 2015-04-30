@@ -3,6 +3,7 @@ module.exports = function (sequelize, DataTypes) {
     // i'd usually have an `owner` field here so we can say what user has
     // ownership of the company, so who has permission to edit, view, etc.
     // however, we're just going to do that with sessions for the sake of our app
+    // and simplicity. 
     name: {
       type: DataTypes.STRING,
       allowNull: false,
