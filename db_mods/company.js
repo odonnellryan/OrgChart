@@ -36,12 +36,15 @@ exports.getCompanyInfoByPk = function (req, res) {
     }
   })
     .then(function (company) {
-      company.getTitles().then(function(getTitles) {
-        var titles = company.getTitles()
-      })
+      var titles = {};
+      if (company.hasOwnProperty('getTitles')) {
+        titles = company.getTitles();
+      } else {
+        titles = "test title name";
+      }
       res.render('company', {
-        company:  company.get({plain: true})
-        titles: titles,
+        company:  company.get({plain: true}),
+        titles: titles
         //employees: employees,
       });
     }).catch(function (error) {
