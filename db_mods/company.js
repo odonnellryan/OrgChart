@@ -25,7 +25,6 @@ exports.getCompanies = function (req, res) {
     }
   })
     .then(function (companies) {
-      console.log(companies);
       res.render('company', {companies:  companies});
     });
 };
@@ -37,15 +36,17 @@ exports.getCompanyInfoByPk = function (req, res) {
     }
   })
     .then(function (company) {
-      console.log(company);
-      var titles = company.getTitles({plain: true});
-      var employees = company.getEmployees({plain: true});
+      company.getTitles().then(function(getTitles) {
+        var titles = company.getTitles()
+      })
       res.render('company', {
-        company:  company.get({plain: true}),
+        company:  company.get({plain: true})
         titles: titles,
-        employees: employees,
+        //employees: employees,
       });
     }).catch(function (error) {
+      console.log("Error thrown from getCompanyInfoByPk");
+      console.log(error);
       res.render('company', {error:  error});
     });
 };
