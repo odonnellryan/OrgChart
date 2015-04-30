@@ -32,5 +32,4 @@ router.route('/:pk')
     console.log(req.params.pk);
     db_mods.company.getCompanyInfoByPk(req, res);
   });
-
 module.exports = router;

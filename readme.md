@@ -9,7 +9,7 @@
 
 3) Run `npm start`
 
-
+Note: if you install supervisor (`npm install -g supervisor`) and then run `supervisor bin/www` the app will restart on save.
 
 ### The 3 main requirements are:
 
