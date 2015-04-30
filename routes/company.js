@@ -8,7 +8,7 @@ router.route('/')
     // I'd like to look into this more to prove if doing things
     // in this manner fit in with the event loop model
     // of Node.js. This needs testing.
-    db_mods.createCompany(req, res);
+    db_mods.company.createCompany(req, res);
   })
   .get(function (req, res) {
     // if we don't have any companies stored in the session we'll just 
@@ -18,7 +18,7 @@ router.route('/')
     // page load?
     // for now we'll hold off on caching, but revisit.
     if (req.session.companies) {
-      db_mods.getCompanies(req, res);
+      db_mods.company.getCompanies(req, res);
     } else {
       res.render('company');
     }
@@ -30,7 +30,7 @@ router.route('/')
 router.route('/:pk')
   .get(function (req, res) {
     console.log(req.params.pk);
-    db_mods.getCompanyInfoByPk(req, res);
+    db_mods.company.getCompanyInfoByPk(req, res);
   });
 
 module.exports = router;
