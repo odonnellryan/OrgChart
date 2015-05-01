@@ -28,7 +28,7 @@ app.use(bodyParser.json());
 app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-
+app.use(express.csrf());
 // of course this key should be changed!
 // also, in a production environment we should probably use redis or
 // similar to store session data, otherwise if we restart the app
