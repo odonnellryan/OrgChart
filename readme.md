@@ -11,6 +11,8 @@
 
 3) Run `npm start`
 
+4) App now should be running on: 127.0.0.1:3000/company
+
 Note: if you install supervisor (`npm install -g supervisor`) and then run `supervisor bin/www` the app will restart on save. Helps with development.
 
 
@@ -27,25 +29,18 @@ Note: if you install supervisor (`npm install -g supervisor`) and then run `supe
 
 ### Things I'd love to do (if I had time) in order of priority:
 
-1) Testing! Commiting some time to learn a testing framework would be really cool.
+1) Testing!
 
-2) Transactions for DB (would help us support a lot of things, such as undo)
+2) Finish features. Unfortunately, I did not have enough time to complete all feature requests.
 
-3) Additional ways to structure the Org chart. I'd like to be able to
-    see what it'd look like if we structured purely on the direct report/manager
-    roles, for example. 
+3) Proper frontend. I'd love to spend some time making an Angular app.
 
-4) Additional employee information. You probably want to know more about them!
-  Phone numbers, emails, etc.
-
-5) Proper frontend. I'd love to spend some time making an Angular app.
-
-6) Way to make the whole app a true module, to be easily integrated with another app.
+4) Way to make the whole app a true module, to be easily integrated with another app.
    I think this has great potential for gradual signup!
 
-7) Form validation similar to WTForms (Flask/Python) to properly display validation errors.
+5) Form validation similar to WTForms (Flask/Python) to properly display validation errors.
 
-8) Caching. We do a decent amount of DB queries.
+6) Caching.
 
 
 
@@ -122,10 +117,10 @@ Note: if you install supervisor (`npm install -g supervisor`) and then run `supe
 1) Session support for users
 
 2) RESTful API to:
-  - Add/Remove/Edit `Company`
-  - Add/Remove/Edit `Title`
-  - Add/Remove/Edit `Employee`
+  - Add/Remove/Edit `Company` - Only supports adds
+  - Add/Remove/Edit `Title` - DONE
+  - Add/Remove/Edit `Employee` - No employee support. Base off `Title`.
 
-3) Reorder `Employee` by changing their Title
+3) Reorder `Employee` by changing their `Title`
 
-4) Support a progressive enhancement UI
+4) Support a `progressive enhancement` UI

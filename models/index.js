@@ -1,5 +1,8 @@
 var Sequelize = require('sequelize');
 
+// this is copied from the sequelize examples. Seems to be the suggested way to do it.
+// just pulls all our models in for ease of use
+
 var sequelize = new Sequelize('db', 'username', 'password', {
   dialect: 'sqlite',
   storage: 'db.sqlite'

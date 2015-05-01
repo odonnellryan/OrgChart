@@ -1,11 +1,12 @@
 var express = require('express');
 var db_mods = require('../db_mods');
-var router = express.Router();
 var utils = require('../utils');
 
 // includes for csrf 
 var csrf = require('csurf');
 var csrfProtection = csrf({ cookie: true });
+
+var router = express.Router();
 
 // landing page for all companies
 router.route('/')
@@ -22,9 +23,11 @@ router.route('/')
     }
   });
 
-// this is the page for a specific company
-// will allow us to view the companie's org chart
-// and give us our links to add titles, users, etc.
+//
+// Not completed.
+// This function would eventually be the entrypoint to the entire 
+// org chart. It would call all the needed subroutines to build the chart.
+//
 router.route('/:pk')
   .get(utils.checkAuth, function (req, res) {
     console.log(req.params.pk);
