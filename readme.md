@@ -29,20 +29,22 @@ Note: if you install supervisor (`npm install -g supervisor`) and then run `supe
 
 1) Testing! Commiting some time to learn a testing framework would be really cool.
 
-2) Additional ways to structure the app. It'd be interesting to come up with
+2) Transactions / atomic updates.
+
+3) Additional ways to structure the app. It'd be interesting to come up with
    different ways to display the organizational chart. I'd like to be able to
     see what it'd look like if we structured purely on the direct report/manager
     roles, for example. 
 
-3) Additional employee information. You probably want to know more about them!
+4) Additional employee information. You probably want to know more about them!
   Phone numbers, emails, etc.
 
-4) Proper frontend. I'd love to spend some time making an Angular app.
+5) Proper frontend. I'd love to spend some time making an Angular app.
 
-5) Way to make the whole app a true module, to be easily integrated with another app.
+6) Way to make the whole app a true module, to be easily integrated with another app.
    I think this has great potential for gradual signup!
 
-6) Form validation similar to WTForms (Flask/Python)
+7) Form validation similar to WTForms (Flask/Python)
 
 
 

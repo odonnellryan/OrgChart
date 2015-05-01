@@ -5,6 +5,8 @@ block content
     h1 #{company.name}
     if titles
       for val in titles
+        p #{val.id}
+        p #{val.rank}
         p #{val.name}
     div.form
       form(name="create_title", action="/title/#{company.uuid}", method="post")

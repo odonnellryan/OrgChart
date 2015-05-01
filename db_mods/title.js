@@ -2,15 +2,16 @@ var models = require('../models');
 
 exports.createTitle = function (req, res) {
   models.Title.build(
-    { name: req.body.name },
-    { rank: req.body.rank },
-    { CompanyUuid: req.params.pk },
+    { name: req.body.name,
+      rank: req.body.rank,
+      CompanyUuid: req.params.pk
+      },
     { validate: true }
   ).save()
     .then(function () {
       res.redirect(req.params.pk);
     }).catch(function (error) {
-      res.render(req.params.pk, {error:  error});
+      res.render('error', {error:  error});
     });
 };
 
