@@ -2,11 +2,15 @@ extends layout
 
 block content
     if error
-        p error
+        p #{error}
     if company
-        p #{company.name}
+        h1 #{company.name}
         p #{titles}
         p #{emploees}
+        p
+            a(href='/title/#{company.uuid}') Add Title
+        p
+            a(href='/title/#{company.uuid}') Add Employee
     else
         if companies
             each val in companies

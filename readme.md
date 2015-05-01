@@ -9,7 +9,7 @@
 
 3) Run `npm start`
 
-Note: if you install supervisor (`npm install -g supervisor`) and then run `supervisor bin/www` the app will restart on save.
+Note: if you install supervisor (`npm install -g supervisor`) and then run `supervisor bin/www` the app will restart on save. Helps with development.
 
 ### The 3 main requirements are:
 
@@ -26,7 +26,7 @@ Note: if you install supervisor (`npm install -g supervisor`) and then run `supe
     This approaches a graph/heap/tree, but adding these constraints would
     complicate the problem and make it harder to manage. By looking at several 
     org. charts online, it can be determined that most organizations are 
-    structured by employee `Title.` Arguments can be made either way, but we're 
+    structured by employee `Title`. Arguments can be made either way, but we're 
     going to assume this is how we'd like to structure our chart as well and 
     sort our data based on the numerical rank of the `Title` model. 
 

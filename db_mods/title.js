@@ -6,14 +6,6 @@ exports.createTitle = function (req, res) {
     { validate: true }
   ).save()
     .then(function (company) {
-      var company_pk = req.params.pk;
-      // normally we'd do some real login/auth.
-      // but that's beyond the scope of the project. We'll
-      // just check to see if the company uuid is in the session
-      if (company in req.session.companies) {
-
-      }
-
       if (!req.session.companies) {
         req.session.companies = [company.uuid];
         res.redirect('/company');

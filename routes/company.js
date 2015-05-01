@@ -1,6 +1,7 @@
 var express = require('express');
 var db_mods = require('../db_mods');
 var router = express.Router();
+var utils = require('../utils');
 
 // landing page for all companies
 router.route('/')
@@ -28,8 +29,9 @@ router.route('/')
 // will allow us to view the companie's org chart
 // and give us our links to add titles, users, etc.
 router.route('/:pk')
-  .get(function (req, res) {
+  .get(utils.checkAuth, function (req, res) {
     console.log(req.params.pk);
     db_mods.company.getCompanyInfoByPk(req, res);
   });
+
 module.exports = router;

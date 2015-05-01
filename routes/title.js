@@ -17,4 +17,13 @@ router.route('/')
     }
   });
 
+router.route('/:pk')
+  .post(function (req, res) {
+    db_mods.title.createTitle(req, res);
+  })
+  .get(function (req, res) {
+    console.log(req.params.pk);
+    db_mods.company.getCompanyInfoByPk(req, res);
+  });
+
 module.exports = router;

@@ -13,7 +13,7 @@ var models = require('./models');
 var app = express();
 
 // I do this just for ease of use, you wouldn't want this here normally!
-models.sequelize.sync();
+//models.sequelize.sync();
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
