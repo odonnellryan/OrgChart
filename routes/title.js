@@ -15,12 +15,18 @@ router.route('/')
 // basically: delete, post, get, put.
 
 router.route('/:pk')
-  .post(function (req, res) {
-    db_mods.title.createTitle(req, res);
-  })
   .get(function (req, res) {
     console.log(req.params.pk);
     db_mods.title.getTitlesByCompany(req, res);
+  })
+  .post(function (req, res) {
+    db_mods.title.createTitle(req, res);
+  })
+  .put(function (req, res) {
+    db_mods.title.deleteTitle(req, res);
+  })
+  .delete(function (req, res) {
+    db_mods.title.deleteTitle(req, res);
   });
 
 module.exports = router;

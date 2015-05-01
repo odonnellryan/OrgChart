@@ -29,10 +29,9 @@ Note: if you install supervisor (`npm install -g supervisor`) and then run `supe
 
 1) Testing! Commiting some time to learn a testing framework would be really cool.
 
-2) Transactions / atomic updates.
+2) Transactions for DB (would help us support a lot of things, such as undo)
 
-3) Additional ways to structure the app. It'd be interesting to come up with
-   different ways to display the organizational chart. I'd like to be able to
+3) Additional ways to structure the Org chart. I'd like to be able to
     see what it'd look like if we structured purely on the direct report/manager
     roles, for example. 
 
@@ -44,7 +43,7 @@ Note: if you install supervisor (`npm install -g supervisor`) and then run `supe
 6) Way to make the whole app a true module, to be easily integrated with another app.
    I think this has great potential for gradual signup!
 
-7) Form validation similar to WTForms (Flask/Python)
+7) Form validation similar to WTForms (Flask/Python) to properly display validation errors.
 
 
 
@@ -125,6 +124,6 @@ Note: if you install supervisor (`npm install -g supervisor`) and then run `supe
   - Add/Remove/Edit `Title`
   - Add/Remove/Edit `Employee`
 
-5) Reorder `Employee` by changing their Title
+3) Reorder `Employee` by changing their Title
 
-6) Support a progressive enhancement UI
+4) Support a progressive enhancement UI

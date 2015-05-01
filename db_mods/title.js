@@ -31,3 +31,16 @@ exports.getTitlesByCompany = function (req, res) {
       });
     });
 };
+
+exports.deleteTitle = function (req, res) {
+  models.Title.find({
+    where: {
+      id: req.body.pk
+    }
+  })
+    .then(function (titles) {
+      titles.destroy().then(function () {
+        res.redirect(req.params.pk);
+      });
+    });
+};
