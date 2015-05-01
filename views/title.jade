@@ -2,9 +2,12 @@ extends layout
 
 block content
   if company
-    for val in company.titles
-      p #{val}
+    h1 #{company.name}
+    if titles
+      for val in titles
+        p #{val.name}
     div.form
       form(name="create_title", action="/title/#{company.uuid}", method="post")
         input(type="text", name="name")
+        input(type="text", name="rank")
         input(type="submit", value="Add Title")

@@ -36,14 +36,8 @@ exports.getCompanyInfoByPk = function (req, res) {
     }
   })
     .then(function (company) {
-      var titles = {};
-      if (company.hasOwnProperty('getTitles')) {
-        titles = company.getTitles();
-      }
       res.render('company', {
         company:  company.get({plain: true}),
-        titles: titles
-        //employees: employees,
       });
     }).catch(function (error) {
       console.log("Error thrown from getCompanyInfoByPk");

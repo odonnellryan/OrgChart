@@ -2,6 +2,8 @@ var express = require('express');
 
 //
 // I feel there may be a better way of doing this.
+// if they're using a company_uuid that doesn't belong
+// to their session they aren't authenticated.
 // 
 exports.checkAuth = function (req, res, next) {
   var params_pk = req.params.pk;

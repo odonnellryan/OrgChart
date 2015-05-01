@@ -1,6 +1,8 @@
 ## Organizational Chart
 ### Node.js + Express as the backend, SQLite as the DB, and Angular as the frontend tech.
 
+
+
 ### How to run:
 
 1) Install Node.js and NPM
@@ -10,6 +12,8 @@
 3) Run `npm start`
 
 Note: if you install supervisor (`npm install -g supervisor`) and then run `supervisor bin/www` the app will restart on save. Helps with development.
+
+
 
 ### The 3 main requirements are:
 
@@ -21,14 +25,36 @@ Note: if you install supervisor (`npm install -g supervisor`) and then run `supe
 
 
 
+### Things I'd love to do (if I had time) in order of priority:
+
+1) Testing! Commiting some time to learn a testing framework would be really cool.
+
+2) Additional ways to structure the app. It'd be interesting to come up with
+   different ways to display the organizational chart. I'd like to be able to
+    see what it'd look like if we structured purely on the direct report/manager
+    roles, for example. 
+
+3) Additional employee information. You probably want to know more about them!
+  Phone numbers, emails, etc.
+
+4) Proper frontend. I'd love to spend some time making an Angular app.
+
+5) Way to make the whole app a true module, to be easily integrated with another app.
+   I think this has great potential for gradual signup!
+
+6) Form validation similar to WTForms (Flask/Python)
+
+
+
 ### Note on data structures: 
 
-    This approaches a graph/heap/tree, but adding these constraints would
+    This approaches several data structures(graph/heap/tree), but adding these constraints would
     complicate the problem and make it harder to manage. By looking at several 
     org. charts online, it can be determined that most organizations are 
     structured by employee `Title`. Arguments can be made either way, but we're 
     going to assume this is how we'd like to structure our chart as well and 
     sort our data based on the numerical rank of the `Title` model. 
+
 
 
 ### Working spec:
@@ -41,7 +67,7 @@ Note: if you install supervisor (`npm install -g supervisor`) and then run `supe
 
   - The session will keep track of the various `Company Charts` the user may have. 
     Each `Company` gets a unique ID assigned which will be used as the URL 
-    linking to that chart.
+    linking to that chart. Eventually use this for gradual signup purposes!
 
 
 

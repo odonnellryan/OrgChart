@@ -1,31 +1,32 @@
 var models = require('../models');
 
 exports.createTitle = function (req, res) {
-  models.Company.build(
+  models.Title.build(
     { name: req.body.name },
+    { rank: req.body.rank },
+    { CompanyUuid: req.params.pk },
     { validate: true }
   ).save()
-    .then(function (company) {
-      if (!req.session.companies) {
-        req.session.companies = [company.uuid];
-        res.redirect('/company');
-      } else {
-        req.session.companies.push(company.uuid);
-        res.redirect('/company');
-      }
+    .then(function () {
+      res.redirect(req.params.pk);
     }).catch(function (error) {
-      res.render('company', {error:  error});
+      res.render(req.params.pk, {error:  error});
     });
 };
 
 exports.getTitlesByCompany = function (req, res) {
-  models.Company.findAll({
+  models.Title.findAll({
     where: {
-      uuid: { in: req.session.companies }
+      CompanyUuid: req.params.pk
     }
   })
-    .then(function (companies) {
-      console.log(companies);
-      res.render('company', {companies:  companies});
+    .then(function (titles) {
+      models.Company.find({
+        where: {
+          uuid: req.params.pk
+        }
+      }).then(function (company) {
+        res.render('title', {company: company, titles: titles});
+      });
     });
 };

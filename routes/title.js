@@ -2,20 +2,17 @@ var express = require('express');
 var db_mods = require('../db_mods');
 var router = express.Router();
 
+// there's nothing to do from the main titles page
+// titles belong to companies, so send them back to the company
+// page to start their journey
+
 router.route('/')
-  .post(function (req, res) {
-    // I'd like to look into this more to see if doing things
-    // in this manner fits in with the event loop model
-    // of Node.js. I feel it'd be okay.
-    db_mods.createTitle(req, res);
-  })
   .get(function (req, res) {
-    if (req.session.companies) {
-      db_mods.getTitles(req, res);
-    } else {
-      res.redirect('/company');
-    }
+    res.redirect('/company');
   });
+
+// for actions we want to take on company titles.
+// basically: delete, post, get, put.
 
 router.route('/:pk')
   .post(function (req, res) {
@@ -23,7 +20,7 @@ router.route('/:pk')
   })
   .get(function (req, res) {
     console.log(req.params.pk);
-    db_mods.company.getCompanyInfoByPk(req, res);
+    db_mods.title.getTitlesByCompany(req, res);
   });
 
 module.exports = router;

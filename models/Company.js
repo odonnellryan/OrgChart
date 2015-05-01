@@ -23,6 +23,7 @@ module.exports = function (sequelize, DataTypes) {
     classMethods: {
       associate: function (models) {
         Company.hasMany(models.Employee, {as: "Employees"});
+        Company.hasMany(models.Title, {as: "Titles"});
       }
     }
   });
