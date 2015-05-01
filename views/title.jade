@@ -5,9 +5,16 @@ block content
     h1 #{company.name}
     if titles
       for val in titles
-        p #{val.id}
-        p #{val.rank}
-        p #{val.name}
+        form(name="create_title", action="/title/#{company.uuid}?_method=PUT", method="POST")
+          input(type="hidden", name="id" value="#{val.id}")
+          input(type="text", name="name" value="#{val.name}")
+          input(type="text", name="rank" value="#{val.rank}")
+          input(type="submit", value="Update Title")
+        form(name="create_title", action="/title/#{company.uuid}?_method=DELETE", method="POST")
+          input(type="hidden", name="id" value="#{val.id}")
+          input(type="submit", value="Delete Title")
+
+    h2 Add a new Title!
     div.form
       form(name="create_title", action="/title/#{company.uuid}", method="post")
         input(type="text", name="name")

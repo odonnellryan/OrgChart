@@ -10,7 +10,6 @@ exports.checkAuth = function (req, res, next) {
   var body_pk = req.body.pk;
   var session = false;
   if (!req.session.companies) {
-    console.log("FAILURE AT SESSION");
     session = true;
   } else {
     if (params_pk) {
@@ -31,7 +30,7 @@ exports.checkAuth = function (req, res, next) {
     }
   }
   if (body_pk || params_pk || session) {
-    res.render('company', {error: "Not authorized to view company or company does not exist."});
+    res.render('company', {error: "Not authorized to view item or item does not exist."});
   } else {
     next();
   }

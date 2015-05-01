@@ -8,6 +8,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var methodOverride = require('method-override');
 var models = require('./models');
 
 var app = express();
@@ -23,6 +24,8 @@ app.locals.pretty = true;
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
+// so we can send put, delete, etc. example: action="/resource?_method=DELETE"
+app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 

@@ -45,6 +45,8 @@ Note: if you install supervisor (`npm install -g supervisor`) and then run `supe
 
 7) Form validation similar to WTForms (Flask/Python) to properly display validation errors.
 
+8) CSRF. Right now we don't do anything for CSRF. Use package: express.csrf
+
 
 
 ### Note on data structures: 
