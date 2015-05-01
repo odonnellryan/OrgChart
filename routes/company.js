@@ -3,25 +3,22 @@ var db_mods = require('../db_mods');
 var router = express.Router();
 var utils = require('../utils');
 
+// includes for csrf 
+var csrf = require('csurf');
+var csrfProtection = csrf({ cookie: true });
+
 // landing page for all companies
 router.route('/')
-  .post(function (req, res) {
-    // I'd like to look into this more to prove if doing things
-    // in this manner fit in with the event loop model
-    // of Node.js. This needs testing.
+  .post(csrfProtection, function (req, res) {
     db_mods.company.createCompany(req, res);
   })
-  .get(function (req, res) {
+  .get(csrfProtection, function (req, res) {
     // if we don't have any companies stored in the session we'll just 
     // go back to the main page to allow the user to create a company
-    //
-    // this is a good candidate for caching. why query the db each 
-    // page load?
-    // for now we'll hold off on caching, but revisit.
     if (req.session.companies) {
       db_mods.company.getCompanies(req, res);
     } else {
-      res.render('company');
+      res.render('company', {csrfToken: req.csrfToken()});
     }
   });
 

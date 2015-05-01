@@ -9,7 +9,10 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var methodOverride = require('method-override');
+var csrf = require('csurf');
 var models = require('./models');
+
+// setting up csrf
 
 var app = express();
 
@@ -23,14 +26,13 @@ app.set('view engine', 'jade');
 app.locals.pretty = true;
 
 app.use(logger('dev'));
-app.use(bodyParser.json());
 // so we can send put, delete, etc. example: action="/resource?_method=DELETE"
 app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.csrf());
+
 // of course this key should be changed!
-// also, in a production environment we should probably use redis or
+// also, in production we should probably use redis or
 // similar to store session data, otherwise if we restart the app
 // this is lost.
 app.use(

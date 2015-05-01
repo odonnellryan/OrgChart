@@ -27,7 +27,7 @@ exports.getTitlesByCompany = function (req, res) {
           uuid: req.params.pk
         }
       }).then(function (company) {
-        res.render('title', {company: company, titles: titles});
+        res.render('title', {company: company, titles: titles, csrfToken: req.csrfToken()});
       }).catch(function (error) {
         res.render('error', {error:  error});
       });

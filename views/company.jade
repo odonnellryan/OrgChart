@@ -16,5 +16,6 @@ block content
                     a(href='/company/#{val.uuid}') #{val.name}
         div.form
           form(name="create_company", action="/company", method="post")
+                input(type="hidden" name="_csrf" value="#{csrfToken}")
                 input(type="text", name="name", placeholder="Company Name")
                 input(type="submit", value="Create Org Chart")   

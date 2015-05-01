@@ -25,7 +25,7 @@ exports.getCompanies = function (req, res) {
     }
   })
     .then(function (companies) {
-      res.render('company', {companies:  companies});
+      res.render('company', {companies:  companies, csrfToken: req.csrfToken()});
     });
 };
 
